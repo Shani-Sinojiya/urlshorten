@@ -2,9 +2,9 @@ package collections
 
 import (
 	"go.mongodb.org/mongo-driver/mongo"
-	"urlshorten.kwikbill.in/database"
+	"urlshorten.kwikbill.in/databases"
 )
 
 func Urls() *mongo.Collection {
-	return database.MongoDBDatabase.Collection("urls")
+	return databases.MongoDBDatabase.Collection("urls")
 }

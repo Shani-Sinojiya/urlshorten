@@ -1,0 +1,16 @@
+version: 1.0.0
+
+server:
+  port: ":8080"
+  mode: "development" # "development" or "production"
+
+databases:
+  mongodb:
+    uri: "mongodb://localhost:27017"
+    db: "kwikbillv2ShortUrl"
+
+  redis:
+    host: "localhost"
+    port: "6379"
+    password: ""
+    db: 3
