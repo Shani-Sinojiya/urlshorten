@@ -19,7 +19,7 @@ import (
 
 func main() {
 	defer databases.CloseDB()
-	
+
 	app := fiber.New(fiber.Config{
 		JSONEncoder:   json.Marshal,
 		JSONDecoder:   json.Unmarshal,
@@ -43,7 +43,7 @@ func main() {
 			TimeZone:   "Asia/Kolkata",
 		}))
 	} else {
-		file, err := os.OpenFile("./backend"+time.Now().Format("dd/mm/yyyy hh:mm:ss a")+".log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+		file, err := os.OpenFile("./urlshortenbackend"+time.Now().Format("dd/mm/yyyy hh:mm:ss a")+".log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 		if err != nil {
 			log.Fatalf("error opening file: %v", err)
 		}

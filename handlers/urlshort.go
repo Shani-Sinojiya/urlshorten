@@ -70,11 +70,26 @@ func randomString(length uint8) string {
 func GetUrl(c *fiber.Ctx) error {
 	shortUrl := c.Params("shorturl")
 
+	url, err := functions.GetCacheUrl(shortUrl)
+
+	if err == nil {
+		return c.Redirect(url, fiber.StatusMovedPermanently)
+	}
+
 	_, longUrl, err := functions.IsExistShorturl(shortUrl)
 
 	if err != nil {
 		return c.Status(fiber.StatusNotFound).JSON(fiber.Map{
 			"message": "url not found",
+			"success": false,
+		})
+	}
+
+	err = functions.SetCacheUrl(shortUrl, longUrl)
+
+	if err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"message": "internal server error",
 			"success": false,
 		})
 	}
