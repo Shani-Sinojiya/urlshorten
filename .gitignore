@@ -1,0 +1,7 @@
+temp
+vendor
+.vscode
+
+*.exe
+*.exe~
+*.log
